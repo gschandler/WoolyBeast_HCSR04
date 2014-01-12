@@ -14,7 +14,7 @@ class WoolyBeast_HCSR04
       CM,
       IN
     };
-    double  distance( unsigned long duration, Scale scale ) const;
+    double  distance( unsigned long duration, Scale scale = CM ) const;
   
   private:
     int             _triggerPin;
