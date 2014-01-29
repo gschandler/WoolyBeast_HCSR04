@@ -1,0 +1,23 @@
+#######################################
+# Syntax Coloring Map For WoolyBeast_HCSR04
+# HC-SR04 Ultrasonic Range Finder
+####################################### 
+# Class
+#######################################
+
+WoolyBeast_HCSR04	KEYWORD3
+
+#######################################
+# Methods and Functions 
+#######################################	
+
+begin	KEYWORD2
+sample	KEYWORD2
+distance	KEYWORD2
+
+#######################################
+# Constants
+#######################################
+ 
+CM		LITERAL1
+IN		LITERAL1

@@ -28,7 +28,7 @@ class WoolyBeast_HCSR04
   public:
     WoolyBeast_HCSR04( int triggerPin, int echoPin );
     
-    void  begin( int temperatureInCM = 20 );  // air temperature (˚C)
+    void  begin( float temperatureInC = 20.0 );  // air temperature (˚C)
     
     unsigned long  sample(void) const;
     
@@ -36,12 +36,12 @@ class WoolyBeast_HCSR04
       CM,
       IN
     };
-    double  distance( unsigned long duration, Scale scale = CM ) const;
+    float  distance( unsigned long duration, Scale scale = CM ) const;
   
   private:
     int             _triggerPin;
     int             _echoPin;
-    unsigned long   _soundVelocity;
+    float			_soundVelocity;
 };
 
 

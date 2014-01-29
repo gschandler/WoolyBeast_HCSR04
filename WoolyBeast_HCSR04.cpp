@@ -24,13 +24,16 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "WoolyBeast_HCSR04.h"
 #include "Arduino.h"
 
-WoolyBeast_HCSR04::WoolyBeast_HCSR04( int triggerPin, int echoPin ) : _triggerPin(triggerPin), _echoPin(echoPin), _soundVelocity(34300)
+WoolyBeast_HCSR04::WoolyBeast_HCSR04( int triggerPin, int echoPin ) :
+_triggerPin(triggerPin),
+_echoPin(echoPin),
+_soundVelocity(34300.0)	// roughly a typical value for 20˚C
 {
 }
 
-void  WoolyBeast_HCSR04::begin( int temperatureInCM )
+void  WoolyBeast_HCSR04::begin( float temperatureInC )
 {
-    _soundVelocity = long(331.4 + 0.6*float(temperatureInCM)) * 100;
+    _soundVelocity = (331.4 + 0.6*temperatureInC) * 100.0;
     pinMode(_triggerPin,OUTPUT);
     pinMode(_echoPin,INPUT);
 }
@@ -46,17 +49,17 @@ unsigned long  WoolyBeast_HCSR04::sample(void) const
 
   unsigned long duration = pulseIn(_echoPin,HIGH);  // echo pin goes low when the signal returns
   
-  return duration >> 1;
+  return duration >> 1;				// return 1/2 total duration
 }
 
-static double convertToSeconds( unsigned long microseconds )
+static float convertToSeconds( unsigned long microseconds )
 {
-  return double(microseconds) / 1000000.0;
+  return float(microseconds) / 1000000.0;
 }
 
-double  WoolyBeast_HCSR04::distance( unsigned long duration, WoolyBeast_HCSR04::Scale scale ) const
+float  WoolyBeast_HCSR04::distance( unsigned long duration, WoolyBeast_HCSR04::Scale scale ) const
 {
-    double distance = double(_soundVelocity) * convertToSeconds(duration);
+    float distance = _soundVelocity * convertToSeconds(duration);
     if ( scale == WoolyBeast_HCSR04::IN ) {
       distance /= 2.54;
     }
