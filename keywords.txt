@@ -5,7 +5,7 @@
 # Class
 #######################################
 
-WoolyBeast_HCSR04	KEYWORD3
+WoolyBeast_HCSR04	KEYWORD1
 
 #######################################
 # Methods and Functions 
