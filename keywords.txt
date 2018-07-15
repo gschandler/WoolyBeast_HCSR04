@@ -19,5 +19,5 @@ distance	KEYWORD2
 # Constants
 #######################################
  
-CM		LITERAL1
-IN		LITERAL1
+CM	LITERAL1
+IN	LITERAL1
